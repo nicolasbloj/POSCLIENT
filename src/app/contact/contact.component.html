@@ -1,0 +1,7 @@
+<button type="button" class="btn btn-info" (click)="byEmail=true"> by Email</button>
+<button type="button" class="btn btn-warning" (click)="byEmail=false"> by Social</button>
+
+<div *ngIf="byEmail; then ifcondition else elsecondition"> ... </div>  
+
+<ng-template #ifcondition> {{emailContact}}</ng-template>  
+<ng-template #elsecondition> {{socialContact}} </ng-template>  
