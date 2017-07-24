@@ -112,7 +112,8 @@
       "check-decl",
       "check-operator",
       "check-separator",
-      "check-type"
+      "check-type",
+       "check-whitespace"
     ],
     "directive-selector": [
       true,
