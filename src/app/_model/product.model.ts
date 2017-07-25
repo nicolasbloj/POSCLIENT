@@ -1,31 +1,8 @@
 export class Product {
-    //ProductDTO in POS
+    // ProductDTO in POS
 
-    private _code: string;
-    private _description: string;
-
-    constructor(private aCode: string, private aDescription: string) {
-
-        /*this._code = aCode;
-        this._description = aDescription;*/
+    // nombre de campos igual a dto de backend. json
+    constructor(private code: string, private description: string) {
     }
-
-    get code(): string {
-        return this._code;
-    }
-
-    get description(): string {
-        return this._description;
-    }
-
-    set code(aCode: string) {
-        this._code = aCode;
-    }
-
-    set description(aDescription: string) {
-        this._code = aDescription;
-    }
-
-
 
 }
