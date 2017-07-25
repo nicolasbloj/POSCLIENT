@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Product } from '../../_model/product.model';
 import { ProductService } from '../_service/product.service';
 
@@ -21,10 +22,14 @@ export class ProductAddComponent implements OnInit {
 
   add(): void {
     this._productService.add(this.product).subscribe(
-      data => this.message = data,
+      (data) => {
+        this.message = data;
+        this.product = new Product('', '');
+        //relist!
+      },
       error => this.message = 'Error al cargar producto'
     );
-   this.product = new Product('', '');
-   //relist!
+    
+    
   }
 }
