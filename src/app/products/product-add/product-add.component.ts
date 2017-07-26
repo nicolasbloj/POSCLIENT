@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Product } from '../../_model/product.model';
 import { ProductService } from '../_service/product.service';
@@ -14,6 +14,9 @@ export class ProductAddComponent implements OnInit {
 
   product: Product = new Product('', '');
 
+  @Output()
+  emitter = new EventEmitter<Product>();
+
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
@@ -24,8 +27,8 @@ export class ProductAddComponent implements OnInit {
     this._productService.add(this.product).subscribe(
       (data) => {
         this.message = data;
+        this.emitter.emit(this.product);
         this.product = new Product('', '');
-        // relist!
       },
       error => this.message = 'Error al cargar producto'
     );
