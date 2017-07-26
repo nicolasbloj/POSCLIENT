@@ -25,11 +25,9 @@ export class ProductAddComponent implements OnInit {
       (data) => {
         this.message = data;
         this.product = new Product('', '');
-        //relist!
+        // relist!
       },
       error => this.message = 'Error al cargar producto'
     );
-    
-    
   }
 }
