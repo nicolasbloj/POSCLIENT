@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProductService } from "../_service/product.service";
-import { Product } from "../../_model/product.model";
+import { ProductService } from '../_service/product.service';
+import { Product } from '../../_model/product.model';
 
 @Component({
   selector: 'nab-products-list',
@@ -16,7 +16,7 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
 
-    this._productService.list().subscribe(_data => { this.products = _data });
+    this._productService.list().subscribe(_data => { this.products = _data; });
 
   }
 
