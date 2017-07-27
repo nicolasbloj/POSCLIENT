@@ -23,11 +23,11 @@ export class RestClientService {
     // declarar la llamada y retornar el observable
     // las variables de configuración y los datos, van como parámetros
 
-    /*if (aObject.id) {
+    if (aObject.getId) {
       return this._http
         .put(`${url}/${aObject._id}`, body, options);
-    } else {*/
-    return this._http.post(`${url}/`, body, options);
-    // }
+    } else {
+      return this._http.post(`${url}/`, body, options);
+    }
   }
 }

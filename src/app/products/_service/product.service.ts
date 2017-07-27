@@ -6,6 +6,7 @@ import { Http, Response, RequestOptions } from '@angular/http';
 import { RestClientService } from '../../_service/rest-client.service';
 import { Product } from '../../_model/product.model';
 import { product_api, server, product_resource } from '../../../environments/entrypoints-environment';
+import { TSMap } from "typescript-map";
 
 @Injectable()
 export class ProductService {
@@ -14,12 +15,13 @@ export class ProductService {
 
   constructor(private _restClientService: RestClientService) { }
 
-  add(product: Product): Observable<string> {
+  add(product: Product): Observable<TSMap<string, number>> {
     return this._restClientService.insertOrUpdateData(
       product,
       server.pos_endpoint,
       product_resource.add
-    ).map( (res: Response) => res.text() );
+      //).map( (res: Response) => res.text() );
+    ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
   }
 
   list(): Observable<Product[]> {
