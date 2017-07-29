@@ -2,27 +2,36 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, RequestOptions } from '@angular/http';
+import { TSMap } from "typescript-map";
 
 import { RestClientService } from '../../_service/rest-client.service';
 import { Product } from '../../_model/product.model';
 import { product_api, server, product_resource } from '../../../environments/entrypoints-environment';
-import { TSMap } from "typescript-map";
+
 
 @Injectable()
 export class ProductService {
 
-  data: Observable<Product[]>;
-
+  //data: Observable<Product[]>;
+  
   constructor(private _restClientService: RestClientService) { }
 
-  add(product: Product): Observable<TSMap<string, number>> {
+  addOrUpdate(product: Product): Observable<TSMap<string, number>> {
     return this._restClientService.insertOrUpdateData(
       product,
       server.pos_endpoint,
-      product_resource.add
+      product_resource.addOrUpdate
       //).map( (res: Response) => res.text() );
     ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
   }
+   /**update(product: Product): Observable<TSMap<string, number>> {
+    return this._restClientService.insertOrUpdateData(
+      product,
+      server.pos_endpoint,
+      product_resource.ad
+      //).map( (res: Response) => res.text() );
+    ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
+   }*/
 
   list(): Observable<Product[]> {
     return this._restClientService.getData(product_api.list)

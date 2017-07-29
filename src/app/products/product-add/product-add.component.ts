@@ -26,18 +26,21 @@ export class ProductAddComponent implements OnInit {
 
   }
 
-  add(): void {
-    this._productService.add(this.product).subscribe(
+  addProduct(): void {
+    console.log("Add Product");
+    console.log(this.product);
+
+    this._productService.addOrUpdate(this.product).subscribe(
       (data) => {
         //el controller en backend devulve map<mensaje,id>
         this.resp = data;
 
-        let m: any[] = data.map(function (value, key) {
+        let m: any[] =  this.resp.map(function (value, key) {
           return key;
         });;
 
 
-        let i: any[] = data.map(function (value, key) {
+        let i: any[] =  this.resp.map(function (value, key) {
           return value;
         });;
 
@@ -49,6 +52,8 @@ export class ProductAddComponent implements OnInit {
         this.emitter.emit(this.product);
 
         this.product = new Product('', '');
+        //this.product = {code:'',description:''};
+      
       },
       error => this.message = 'Error al cargar producto'
     );
