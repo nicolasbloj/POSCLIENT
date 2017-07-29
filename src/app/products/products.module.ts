@@ -9,6 +9,7 @@ import { ProductsComponent } from './products.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,12 @@ import { ProductAddComponent } from './product-add/product-add.component';
     HttpModule,
     FormsModule
   ],
-  declarations: [ProductsListComponent, ProductsComponent, ProductAddComponent],
+  declarations: [
+    ProductsListComponent, 
+    ProductsComponent, 
+    ProductAddComponent,
+    ProductEditComponent
+  ],
   providers: [ProductService, RestClientService]
 })
 export class ProductsModule { }

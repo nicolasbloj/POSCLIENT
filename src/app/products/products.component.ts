@@ -9,6 +9,10 @@ import { Product } from '../_model/product.model';
 })
 export class ProductsComponent implements OnInit {
 
+  hidden: boolean = true;
+
+  productToUpdate: Product;
+
   products: Product[];
 
   constructor() { }
@@ -20,8 +24,40 @@ export class ProductsComponent implements OnInit {
     this.products.push(aproduct);
   }
 
+  updateProduct(aproduct: Product): void {
+    // si el producto fue actualizado entonces actualizar en array.
+    //no hay problema ya que lo hacemos dentro del subscribe 
+
+    this.hidden = true;
+
+    let product: Product = null;
+
+    this.products.map(function (p) {
+      console.log(aproduct.getId);
+      console.log(p);
+      if (p.setId === aproduct.setId) {
+        product = p;
+      }
+    });
+
+    if (aproduct != undefined) {
+      const index = this.products.indexOf(product);
+
+      if (index !== -1) {
+        this.products[index] = aproduct;
+      }
+    }
+  }
+
   setProducts(products: Product[]): void {
     this.products = products;
   }
+
+  setProductToUpdate(product: Product): void {
+    this.hidden = false;
+    this.productToUpdate = product;
+  }
+
+
 
 }

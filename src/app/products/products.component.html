@@ -1,2 +1,21 @@
-<nab-product-add (emitter)="addProduct($event)"></nab-product-add>
-<nab-products-list (emitter)="setProducts($event)"></nab-products-list>
+
+    <section class="row">
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7 ">
+            <nab-product-add (emitter)="addProduct($event)"></nab-product-add>
+        </div>
+        <div [hidden]="hidden" class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+            <nab-product-edit  [product]="productToUpdate" (emitter)="updateProduct($event)"></nab-product-edit>
+        </div>
+    </section>
+    <section>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <nab-products-list   (emitter2)="setProductToUpdate($event)" (emitter)="setProducts($event)">
+                </nab-products-list>
+            </div>
+        </div>
+
+    </section>
+ 

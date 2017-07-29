@@ -14,6 +14,8 @@ export class ProductsListComponent implements OnInit {
 
   @Output()
   emitter = new EventEmitter<Product[]>();
+  @Output()
+  emitter2 = new EventEmitter<Product>();
 
   constructor(private _productService: ProductService) { }
 
@@ -22,6 +24,24 @@ export class ProductsListComponent implements OnInit {
       _data => {
         this.products = _data; this.emitter.emit(this.products);
       });
+  }
+
+  editProduct(index: number) {
+
+    let productAux: Product = this.products[index];
+
+    const product: Product =
+      new Product(
+        productAux.getCode,
+        productAux.getDescription,
+        productAux.getId
+      );
+    //Al parecer, para usar product={c,d,i} tengo que tener variables publicas.
+
+    this.emitter2.emit(product);
+
+    //la eliminacion en el array la hacemos una vez que nos aseguremos que se 
+    //eliminó correctamente desde el endpoint
   }
 
 
