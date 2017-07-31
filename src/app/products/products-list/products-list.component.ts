@@ -27,8 +27,14 @@ export class ProductsListComponent implements OnInit {
   }
 
   editProduct(index: number) {
+    console.log('product-list.component -> editProduct');
+    console.log('index : ' + index);
 
-    let productAux: Product = this.products[index];
+    const productAux: Product = this.products[index];
+
+    console.log('product : ' + productAux);
+
+    console.log('product.code : ' + productAux.getCode);
 
     const product: Product =
       new Product(
@@ -36,12 +42,13 @@ export class ProductsListComponent implements OnInit {
         productAux.getDescription,
         productAux.getId
       );
-    //Al parecer, para usar product={c,d,i} tengo que tener variables publicas.
+
+    // Al parecer, para usar product={c,d,i} tengo que tener variables publicas.
 
     this.emitter2.emit(product);
 
-    //la eliminacion en el array la hacemos una vez que nos aseguremos que se 
-    //eliminó correctamente desde el endpoint
+    // la eliminacion en el array la hacemos una vez que nos aseguremos que se
+    // eliminó correctamente desde el endpoint
   }
 
 
