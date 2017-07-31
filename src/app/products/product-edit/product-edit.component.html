@@ -1,13 +1,15 @@
+<br>
 <form>
   <div class="form-group">
-    <label for="id">ID :{{product.id}}</label>
-  </div>
-  <div class="form-group">
+    <label for="code">Nuevo codigo :</label>
     <input type="text" class="form-control" id="code" placeholder="nuevo codigo de producto" name="code" [(ngModel)]="product.code">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="description" placeholder="nueva   descripcion del producto" name="description" [(ngModel)]="product.description">
+    <label for="code">Nueva descripcion : </label>
+    <input type="text" class="form-control" id="description" placeholder="nueva   descripcion del producto" name="description"
+      [(ngModel)]="product.description">
   </div>
-  <button type="submit" (click)="updateProduct()">actualizar</button>
+  <button type="submit" (click)="updateProduct()" type="button" class="btn btn-success">Actualizar ID : {{product.getId}}</button>
 </form>
-<label>{{message}}</label>
+
+<br>

@@ -27,22 +27,23 @@ export class ProductsComponent implements OnInit {
   updateProduct(aproduct: Product): void {
     // si el producto fue actualizado entonces actualizar en array.
     // no hay problema ya que lo hacemos dentro del subscribe
+    console.log('products.component -> updateProduct');
+    console.log('aproduct : ' + aproduct);
 
     this.hidden = true;
 
-    let product: Product = null;
+    let index = -1;
 
-    this.products.map(function (p) {
-      console.log(aproduct.getId);
-      console.log(p);
-      if (p.getId === aproduct.getId) {
-        product = p;
+    for (let i = 0 ; i < this.products.length; i = i + 1) {
+      if (this.products[i].getId === aproduct.getId) {
+        index = i;
+        break;
       }
-    });
+    }
+
+    console.log('index : ' + index);
 
     if (aproduct !== undefined) {
-      const index = this.products.indexOf(product);
-
       if (index !== -1) {
         this.products[index] = aproduct;
       }

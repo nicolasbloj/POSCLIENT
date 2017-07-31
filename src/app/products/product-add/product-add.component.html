@@ -1,3 +1,4 @@
+<br>
 <form>
   <div class="form-group">
     <label for="code">Codigo :</label>
@@ -7,6 +8,8 @@
     <label for="description">Descripcion :</label>
     <input type="text" class="form-control" id="description" placeholder="descripcion del producto" name="code" [(ngModel)]="product.description">
   </div>
-  <button type="submit" (click)="addProduct()">Agregar</button>
+  <button type="submit" (click)="addProduct()" type="button" class="btn btn-success">Agregar</button>
 </form>
+<br>
 <label>{{message}}</label>
+<br>

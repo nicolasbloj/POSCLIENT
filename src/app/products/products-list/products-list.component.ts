@@ -10,7 +10,7 @@ import { Product } from '../../_model/product.model';
 })
 export class ProductsListComponent implements OnInit {
 
-  products: Product[];
+  products: Product[] ;
 
   @Output()
   emitter = new EventEmitter<Product[]>();
@@ -20,9 +20,12 @@ export class ProductsListComponent implements OnInit {
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
+    // TRAE NUEVAMENTE CADA VEZ QUE ENTRAMOS EN PRODUCT, ENTONCES
+    // SI MODIFICAMOS PRODUCTOS NO NOS VA A QUEDAR ORDENADO POR ID.
     this._productService.list().subscribe(
       _data => {
-        this.products = _data; this.emitter.emit(this.products);
+        this.products = _data;
+        this.emitter.emit(this.products);
       });
   }
 
