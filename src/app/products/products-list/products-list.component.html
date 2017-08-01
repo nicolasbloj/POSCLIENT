@@ -13,19 +13,22 @@
     </tr>
   </thead>
   <tbody>
-    
+
     <tr *ngFor="let product of products; let i = index">
       <td>
-        {{product.id // aqui no me permite usar get}}
+        {{product.getId}}
       </td>
       <td>
-        {{product.code}}
+        {{product.getCode}}
       </td>
       <td>
-        {{product.description}}
+        {{product.getDescription}}
       </td>
       <td>
-        <button (click)="editProduct(i)">Editar</button>
+        <button (click)="editProduct(i)" type="button" class="btn btn-warning">Editar</button>
+        <button (click)="deleteProduct(i)" type="button" class="btn btn-danger">Eliminar</button>
+        <button  type="button" class="btn btn-default">⇑</button>
+        <button  type="button" class="btn btn-default">⇓</button>
       </td>
     </tr>
 

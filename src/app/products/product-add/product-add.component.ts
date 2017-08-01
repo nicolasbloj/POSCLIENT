@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { TSMap } from "typescript-map";
+import { TSMap } from 'typescript-map';
 
 import { Product } from '../../_model/product.model';
 import { ProductService } from '../_service/product.service';
@@ -12,7 +12,7 @@ import { ProductService } from '../_service/product.service';
 export class ProductAddComponent implements OnInit {
 
   resp: TSMap<string, number>;
-  message: string = '';
+  message = '';
   id: number;
 
   product: Product = new Product('', '');
@@ -27,22 +27,19 @@ export class ProductAddComponent implements OnInit {
   }
 
   addProduct(): void {
-    console.log("Add Product");
-    console.log(this.product);
 
     this._productService.addOrUpdate(this.product).subscribe(
       (data) => {
-        //el controller en backend devulve map<mensaje,id>
+        // el controller en backend devulve map<mensaje,id>
         this.resp = data;
 
-        let m: any[] =  this.resp.map(function (value, key) {
+        const m: any[] =  this.resp.map(function (value, key) {
           return key;
-        });;
+        });
 
-
-        let i: any[] =  this.resp.map(function (value, key) {
+        const i: any[] =  this.resp.map(function (value, key) {
           return value;
-        });;
+        });
 
         this.message = m[0];
         this.id = i[0];
@@ -52,8 +49,8 @@ export class ProductAddComponent implements OnInit {
         this.emitter.emit(this.product);
 
         this.product = new Product('', '');
-        //this.product = {code:'',description:''};
-      
+        // this.product = {code:'',description:''};
+
       },
       error => this.message = 'Error al cargar producto'
     );
