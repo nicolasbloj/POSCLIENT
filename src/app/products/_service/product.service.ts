@@ -21,18 +21,18 @@ export class ProductService {
   }
 
   insert(product: Product): Observable<TSMap<string, number>> {
-    return this.insertOrUpdate(product);
+    return this.insertOrUpdate(product, product_resource.add);
   }
 
   update(product: Product): Observable<TSMap<string, number>> {
-    return this.insertOrUpdate(product);
+    return this.insertOrUpdate(product, product_resource.update);
   }
 
-  insertOrUpdate(product: Product): Observable<TSMap<string, number>> {
+  insertOrUpdate(product: Product, resourceAddOrUpdate): Observable<TSMap<string, number>> {
     return this._restClientService.insertOrUpdateData(
       product,
       server.pos_endpoint,
-      product_resource.addOrUpdate
+      resourceAddOrUpdate
       // ).map( (res: Response) => res.text() );
     ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
   }
