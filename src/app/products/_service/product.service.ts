@@ -14,7 +14,21 @@ export class ProductService {
 
   constructor(private _restClientService: RestClientService) { }
 
-  addOrUpdate(product: Product): Observable<TSMap<string, number>> {
+  list(): Observable<Product[]> {
+    return this._restClientService.listData(product_api.list)
+      .map((res: Response) => ProductHelper.convertJsonToProductsArray(res.json()));
+    // USAR FOR EACH
+  }
+
+  insert(product: Product): Observable<TSMap<string, number>> {
+    return this.insertOrUpdate(product);
+  }
+
+  update(product: Product): Observable<TSMap<string, number>> {
+    return this.insertOrUpdate(product);
+  }
+
+  insertOrUpdate(product: Product): Observable<TSMap<string, number>> {
     return this._restClientService.insertOrUpdateData(
       product,
       server.pos_endpoint,
@@ -33,20 +47,8 @@ export class ProductService {
     ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
   }
 
-  /**update(product: Product): Observable<TSMap<string, number>> {
-   return this._restClientService.insertOrUpdateData(
-     product,
-     server.pos_endpoint,
-     product_resource.ad
-     //).map( (res: Response) => res.text() );
-   ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
-  }*/
 
-  list(): Observable<Product[]> {
-    return this._restClientService.getData(product_api.list)
-      .map((res: Response) => ProductHelper.convertJsonToProductsArray(res.json()));
-      // USAR FOR EACH
-  }
+  // en list()
   // otra forma de hacerlo es devolviendo Observale<Response>
   // (y nos evitamos map())
   // y en product-list hacer la conversion a Product[], asi :
