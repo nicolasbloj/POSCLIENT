@@ -25,14 +25,23 @@ export class RestClientService {
 
     /*if (aObject.id) {
       return this._http
-        .put(`${url}/aObject.id`, body, options); 
+        .put(`${url}/aObject.id`, body, options);
     } else {
       return this._http
         .post(`${url}/`, body, options);
     }*/
 
-    //Usamos solo PUT tanto para insertar o actualizar data
+    // Usamos solo PUT tanto para insertar o actualizar data
     return this._http.put(`${url}/`, body, options); // ?
-    
   }
+  // repeticion codigo
+  public deleteData(aObject: any, url_base: string, url_resource: string):
+    Observable<Response> {
+    const url: string = url_base + url_resource;
+    const headers0: Headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers0 });
+
+    return this._http.delete(`${url}/${aObject.getId}`, options); // options?
+  }
+
 }

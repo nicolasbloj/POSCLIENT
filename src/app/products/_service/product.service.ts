@@ -22,6 +22,17 @@ export class ProductService {
       // ).map( (res: Response) => res.text() );
     ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
   }
+
+
+  delete(product: Product): Observable<TSMap<string, number>> {
+    return this._restClientService.deleteData(
+      product,
+      server.pos_endpoint,
+      product_resource.delete
+      // ).map( (res: Response) => res.text() );
+    ).map((res: Response) => <TSMap<string, number>>new TSMap().fromJSON(res.json()));
+  }
+
   /**update(product: Product): Observable<TSMap<string, number>> {
    return this._restClientService.insertOrUpdateData(
      product,
