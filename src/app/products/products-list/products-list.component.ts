@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TSMap } from 'typescript-map';
 
 import { ProductService } from '../_service/product.service';
 import { Product } from '../../_model/product.model';
@@ -10,7 +11,12 @@ import { Product } from '../../_model/product.model';
 })
 export class ProductsListComponent implements OnInit {
 
-  products: Product[] ;
+
+  resp: TSMap<string, number>;
+  message = '';
+  id: number;
+
+  products: Product[];
 
   @Output()
   emitter = new EventEmitter<Product[]>();
@@ -28,6 +34,34 @@ export class ProductsListComponent implements OnInit {
         this.emitter.emit(this.products);
       });
   }
+
+  deleteProduct(index: number) {
+
+    this._productService.delete(this.products[index]).subscribe(
+      (data) => {
+
+        // el controller en backend devulve map<mensaje,id>
+        this.resp = data;
+
+        const m: any[] = this.resp.map(function (value, key) {
+          return key;
+        });
+
+        const i: any[] = this.resp.map(function (value, key) {
+          return value;
+        });
+
+        this.message = m[0];
+        this.id = i[0];
+
+        this.products.splice(index, 1);
+
+      },
+      error => this.message = 'Error al cargar producto'
+    );
+
+  }
+
 
   editProduct(index: number) {
     console.log('product-list.component -> editProduct');

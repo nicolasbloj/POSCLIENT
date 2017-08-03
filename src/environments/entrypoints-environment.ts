@@ -4,11 +4,14 @@ export const server = {
 
 export const product_resource = {
     list : '/product/list',
-    addOrUpdate : '/product/addOrUpdate'
+    addOrUpdate : '/product/addOrUpdate',
+    delete: '/product/delete'
+
 
 };
 
 export const product_api = {
     list : server.pos_endpoint + product_resource.list,
-    addOrUpdate : server.pos_endpoint + product_resource.addOrUpdate
+    addOrUpdate : server.pos_endpoint + product_resource.addOrUpdate,
+    delete: server.pos_endpoint + product_resource.delete
 } ;
