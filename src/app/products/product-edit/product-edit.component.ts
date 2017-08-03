@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit {
 
   // actualizamos producto y emitimos al componente padre para q actualice en array tambien.
   updateProduct(): void {
-    this._productService.addOrUpdate(this.product).subscribe(
+    this._productService.update(this.product).subscribe(
       (data) => {
         // el controller en backend devuelve map<mensaje,id>
         this.resp = data;

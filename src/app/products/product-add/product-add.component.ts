@@ -28,7 +28,7 @@ export class ProductAddComponent implements OnInit {
 
   addProduct(): void {
 
-    this._productService.addOrUpdate(this.product).subscribe(
+    this._productService.insert(this.product).subscribe(
       (data) => {
         // el controller en backend devulve map<mensaje,id>
         this.resp = data;
