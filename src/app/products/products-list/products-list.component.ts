@@ -35,6 +35,20 @@ export class ProductsListComponent implements OnInit {
       });
   }
 
+  up(index: number): void {
+    const productToUp: Product = this.products[index];
+    const productToDown: Product = this.products[index - 1];
+    this.products[index - 1] = productToUp;
+    this.products[index] = productToDown
+  }
+
+  down(index: number): void {
+    const productToUp: Product = this.products[index + 1];
+    const productToDown: Product = this.products[index];
+    this.products[index + 1] = productToDown
+    this.products[index] = productToUp;
+  }
+
   deleteProduct(index: number) {
 
     this._productService.delete(this.products[index]).subscribe(
@@ -61,7 +75,6 @@ export class ProductsListComponent implements OnInit {
     );
 
   }
-
 
   editProduct(index: number) {
     console.log('product-list.component -> editProduct');
