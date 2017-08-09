@@ -27,8 +27,8 @@
       <td>
         <button (click)="editProduct(i)" type="button" class="btn btn-warning">Editar</button>
         <button (click)="deleteProduct(i)" type="button" class="btn btn-danger">Eliminar</button>
-        <button  type="button" class="btn btn-default">⇑</button>
-        <button  type="button" class="btn btn-default">⇓</button>
+        <button  type="button" (click)="up(i)" class="btn btn-default">⇑</button>
+        <button  type="button" (click)="down(i)" class="btn btn-default">⇓</button>
       </td>
     </tr>
 
