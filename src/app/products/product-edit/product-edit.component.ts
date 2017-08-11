@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { TSMap } from 'typescript-map';
-
 import { Product } from '../../_model/product.model';
 import { ProductService } from '../_service/product.service';
 
@@ -28,6 +27,7 @@ export class ProductEditComponent implements OnInit {
 
   // actualizamos producto y emitimos al componente padre para q actualice en array tambien.
   updateProduct(): void {
+
     this._productService.update(this.product).subscribe(
       (data) => {
         // el controller en backend devuelve map<mensaje,id>

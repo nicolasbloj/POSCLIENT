@@ -2,9 +2,12 @@
   <thead>
     <tr>
       <th>
+        #
+      </th>
+      <th>
         ID
       </th>
-       <th>
+      <th>
         CODE
       </th>
       <th>
@@ -16,6 +19,9 @@
 
     <tr *ngFor="let product of products; let i = index">
       <td>
+        {{i}}
+      </td>
+      <td>
         {{product.getId}}
       </td>
       <td>
@@ -25,12 +31,44 @@
         {{product.getDescription}}
       </td>
       <td>
-        <button (click)="editProduct(i)" type="button" class="btn btn-warning">Editar</button>
-        <button (click)="deleteProduct(i)" type="button" class="btn btn-danger">Eliminar</button>
-        <button  type="button" (click)="up(i)" class="btn btn-default">⇑</button>
-        <button  type="button" (click)="down(i)" class="btn btn-default">⇓</button>
+        <button (click)="editProduct(i)" type="button" class="btn btn-warning">e</button>
+        <button (click)="deleteProduct(i)" type="button" class="btn btn-danger">x</button>
+        <button type="button" (click)="up(i)" class="btn btn-default">⇑</button>
+        <button type="button" (click)="down(i)" class="btn btn-default">⇓</button>
+        <button type="button" (click)="positionToUpdate=i" class="btn btn-info" data-toggle="modal" data-target="#changePositionModal">#</button>
       </td>
+
+
+
     </tr>
 
   </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="changePositionModal" tabindex="-1" role="dialog" aria-labelledby="changePositionModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <div class="col-sm-6">
+          <h5 class="modal-title" id="changePositionModalTitle">Actualizacion de posicion</h5>
+        </div>
+        <div class="col-sm-6">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="code">Nueva posición :</label>
+
+          <input (keyup)="onKeyIntoChangePositionModal($event,positionNew.value)" (focusout)="positionNew.value=''" type="text" class="form-control"
+            id="positionNew" name="positionNew" #positionNew>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

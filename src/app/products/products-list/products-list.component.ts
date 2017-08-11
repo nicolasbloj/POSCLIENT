@@ -1,8 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TSMap } from 'typescript-map';
-
 import { ProductService } from '../_service/product.service';
 import { Product } from '../../_model/product.model';
+
+declare var jQuery: any;
+
 
 @Component({
   selector: 'nab-products-list',
@@ -11,6 +13,7 @@ import { Product } from '../../_model/product.model';
 })
 export class ProductsListComponent implements OnInit {
 
+  positionToUpdate: number = -1;
 
   resp: TSMap<string, number>;
   message = '';
@@ -33,20 +36,77 @@ export class ProductsListComponent implements OnInit {
         this.products = _data;
         this.emitter.emit(this.products);
       });
+
+  }
+
+  onKeyIntoChangePositionModal(event: any, positionNew0: any) {
+
+    const positionNew: number = Number(positionNew0);
+
+    if (event.key === 'Enter') {
+
+      if (positionNew >= 0 && positionNew < this.products.length) { // && o &  ?
+
+        const productToUpdatePosition: Product = this.products[this.positionToUpdate];
+
+        if ((positionNew) < this.positionToUpdate) {
+          // Desplazar para abajo!
+          let product_initial: Product;
+          let product_next: Product;
+          for (let i: number = positionNew; i < this.positionToUpdate; i = i + 1) {
+
+            if (i === positionNew) {
+              product_initial = this.products[i];
+              this.products[i] = productToUpdatePosition;
+            }
+
+            product_next = this.products[(i + 1)];
+            this.products[i + 1] = product_initial;
+            product_initial = product_next;
+
+          }
+
+        } else {
+          // Desplazar para arriba
+          let product_initial: Product;
+          let product_next: Product;
+
+          for (let i: number = positionNew; i > this.positionToUpdate; i = i - 1) {
+
+            if (i === positionNew) {
+              product_initial = this.products[i];
+              this.products[i] = productToUpdatePosition;
+            }
+
+            product_next = this.products[i - 1];
+            this.products[i - 1] = product_initial;
+            product_initial = product_next;
+
+          }
+
+        }
+        jQuery('#changePositionModal').modal('toggle');
+      }
+    }
+
   }
 
   up(index: number): void {
     const productToUp: Product = this.products[index];
     const productToDown: Product = this.products[index - 1];
-    this.products[index - 1] = productToUp;
-    this.products[index] = productToDown
+    if ((index - 1) >= 0) {
+      this.products[index - 1] = productToUp;
+      this.products[index] = productToDown;
+    }
   }
 
   down(index: number): void {
     const productToUp: Product = this.products[index + 1];
     const productToDown: Product = this.products[index];
-    this.products[index + 1] = productToDown
-    this.products[index] = productToUp;
+    if ((index + 1) < this.products.length) {
+      this.products[index + 1] = productToDown;
+      this.products[index] = productToUp;
+    }
   }
 
   deleteProduct(index: number) {
@@ -100,6 +160,5 @@ export class ProductsListComponent implements OnInit {
     // la eliminacion en el array la hacemos una vez que nos aseguremos que se
     // eliminó correctamente desde el endpoint
   }
-
 
 }

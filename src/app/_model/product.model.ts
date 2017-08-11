@@ -18,13 +18,13 @@ export class Product {
         this.id = _id;
     }
 
-    /*set setCode(_code: string) {
+    set setCode(_code: string) {
         this.code = _code;
     }
 
     set setDescription(_description: string) {
         this.description = _description;
-    }*/
+    }
 
     get getId(): number {
         return this.id;

@@ -19,8 +19,8 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     FormsModule
   ],
   declarations: [
-    ProductsListComponent, 
-    ProductsComponent, 
+    ProductsListComponent,
+    ProductsComponent,
     ProductAddComponent,
     ProductEditComponent
   ],

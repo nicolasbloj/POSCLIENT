@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit {
 
     let index = -1;
 
-    for (let i = 0 ; i < this.products.length; i = i + 1) {
+    for (let i = 0; i < this.products.length; i = i + 1) {
       if (this.products[i].getId === aproduct.getId) {
         index = i;
         break;
