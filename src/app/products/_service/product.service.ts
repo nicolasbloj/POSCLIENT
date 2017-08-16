@@ -7,7 +7,7 @@ import { TSMap } from 'typescript-map';
 import { RestClientService } from '../../_service/rest-client.service';
 import { Product } from '../../_model/product.model';
 import { product_api, server, product_resource } from '../../../environments/entrypoints-environment';
-import { JsonConverter } from '../../_util/json-converter';
+import { ProductJsonConverter } from '../../_util/json/converter/product-json-converter';
 
 @Injectable()
 export class ProductService {
@@ -16,8 +16,7 @@ export class ProductService {
 
   list(): Observable<Product[]> {
     return this._restClientService.listData(product_api.list)
-      .map((res: Response) => new JsonConverter(new Product())
-      .convertJsonToObjectsArray(res.json()));
+      .map((res: Response) => ProductJsonConverter.getInstance().convertJsonToObjectsArray(res.json()));
     // USAR FOR EACH
   }
 
