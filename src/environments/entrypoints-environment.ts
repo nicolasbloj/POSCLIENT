@@ -17,3 +17,18 @@ export const product_api = {
   update: server.pos_endpoint + product_resource.update,
   delete: server.pos_endpoint + product_resource.delete
 };
+
+
+export const client_resource = {
+  list: '/client/list',
+  add: '/client/add',
+  update: '/client/update',
+  delete: '/client/delete'
+
+
+};
+
+export const client_api = {
+  list: server.pos_endpoint + client_resource.list
+};
+
