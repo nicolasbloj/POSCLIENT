@@ -25,7 +25,6 @@ export class ClientsListComponent implements OnInit {
       _data => {
         {
           this.clients = _data;
-          console.log(this.clients);
         }
       });
 
