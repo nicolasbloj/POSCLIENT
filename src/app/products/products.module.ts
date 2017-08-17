@@ -10,6 +10,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { DocProductsListComponent } from './doc-products-list/doc-products-list.component';
 
 @NgModule({
   imports: [
@@ -22,8 +23,10 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     ProductsListComponent,
     ProductsComponent,
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    DocProductsListComponent
   ],
-  providers: [ProductService, RestClientService]
+  providers: [ProductService, RestClientService],
+  exports: [DocProductsListComponent]
 })
 export class ProductsModule { }

@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { ProductsModule } from '../products/products.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -5,16 +7,20 @@ import { SaleDocumentComponent } from './sale-document.component';
 import { ClientsModule } from '../clients/clients.module';
 import { SaleDocumentRoutingModule } from './sale-document-routing.module';
 import { SaleDocumentClientComponent } from './sale-document-client/sale-document-client.component';
+import { SaleDocumentProductComponent } from './sale-document-product/sale-document-product.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     SaleDocumentRoutingModule,
-    ClientsModule
+    ClientsModule,
+    ProductsModule
   ],
   declarations: [
     SaleDocumentComponent,
-    SaleDocumentClientComponent
+    SaleDocumentClientComponent,
+    SaleDocumentProductComponent
   ]
 })
 export class SaleDocumentModule { }

@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-1">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productModalLong">
+            Producto
+        </button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table borderless">
+        <tr>
+            <th class="active"> Codigo</th>
+            <td class="warning">{{product.getCode}}</td>
+
+            <th class="active"> Precio [$]</th>
+            <td><input type="text" class="form-control" id="price" placeholder="precio" name="price" [(ngModel)]="values.price"></td>
+        </tr>
+        <tr>
+            <th class="active">Descripcion</th>
+            <td class="warning">{{product.getDescription}}</td>
+
+            <th class="active"> Cantidad</th>
+            <td><input type="text" class="form-control" id="quantity" placeholder="cantidad" name="quantity" [(ngModel)]="values.quantity"></td>
+        </tr>
+        <tr>
+            <th class="active">Costo</th>
+            <td class="warning">XXXX</td>
+
+            <th class="active">Importe</th>
+            <td class="warning">${{values.price*values.quantity}}</td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <button type="button" class="btn btn-success pull-right" (click)="addProduct()">Agregar</button>
+            </td>
+        </tr>
+    </table>
+</div>
