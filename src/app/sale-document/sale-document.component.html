@@ -1,13 +1,14 @@
 <div class="container">
   <nab-sale-document-client [client]='selectedClientOnPopup'>cargando...</nab-sale-document-client>
+  <nab-sale-document-product (emitter)='receiveItem($event)' [product]='selectedProductOnPopup'>cargando...</nab-sale-document-product>
 </div>
 
-<!-- Modal -->
-<div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<!-- Modal CLIENT-->
+<div class="modal fade " id="clientModalLong" tabindex="-1" role="dialog" aria-labelledby="clientModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Buscar cliente</h5>
+        <h5 class="modal-title" id="clientModalLongTitle">Buscar cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -21,6 +22,30 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div-->
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal PRODUCT-->
+<div class="modal fade " id="productModalLong" tabindex="-1" role="dialog" aria-labelledby="productModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalLongTitle">Buscar productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+
+        <nab-doc-products-list (emitter)='receiveProduct($event)'></nab-doc-products-list>
+
+      </div>
+      <!--div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div-->
     </div>
   </div>
 </div>
