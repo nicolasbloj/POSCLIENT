@@ -1,6 +1,8 @@
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 import { Client } from '../../_model/person/client.model';
 import { ClientService } from '../_service/client.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'nab-clients-list',
@@ -15,7 +17,7 @@ export class ClientsListComponent implements OnInit {
   selectedClient: Client;
 
   @Output()
-  hiddenEmit = new EventEmitter<Client>();
+  emmitter = new EventEmitter<Client>();
 
 
   constructor(private _clientService: ClientService) { }
@@ -33,6 +35,6 @@ export class ClientsListComponent implements OnInit {
 
   onSelectedClient(client: Client): void {
     this.selectedClient = client;
-    // this.hiddenEmit.next(this.selectedClient); //next o emit , enviamos a clientes para que despues usemos en sale-document
+    this.emmitter.next(this.selectedClient); // next o emit , enviamos a clientes para que despues usemos en sale-document
   }
 }

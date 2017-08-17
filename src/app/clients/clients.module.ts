@@ -22,6 +22,12 @@ import { ClientsFilterComponent } from './clients-filter/clients-filter.componen
     ClientsDetailComponent,
     ClientsFilterComponent
   ],
-  providers: [ClientService, RestClientService]
+  providers: [ClientService, RestClientService],
+  exports: [
+    ClientsComponent,
+    ClientsListComponent,
+    ClientsDetailComponent,
+    ClientsFilterComponent
+    ]
 })
 export class ClientsModule { }

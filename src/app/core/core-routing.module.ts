@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: '../clients/clients.module#ClientsModule'
     },
     {
+        path: 'sale',
+        loadChildren: '../sale-document/sale-document.module#SaleDocumentModule'
+    },
+    {
         path: 'contact',
         loadChildren: '../contact/contact.module#ContactModule'
     }

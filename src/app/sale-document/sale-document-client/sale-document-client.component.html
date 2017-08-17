@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-1">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+            Cliente
+        </button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table borderless">
+        <tr>
+            <th class="active"> Codigo</th>
+            <td class="warning">{{client.code}}</td>
+            <th class="active">Nombre</th>
+            <td class="warning">{{client.businessName}}</td>
+            <th class="active">Cuit</th>
+            <td class="warning">{{client.taxId}}</td>
+        </tr>
+        <tr>
+            <th class="active">Industria</th>
+            <td class="warning">{{client.industry}}</td>
+            <th class="active">Phone</th>
+            <td class="warning">{{client.phone}}</td>
+            <th class="active">E-mail</th>
+            <td class="warning">{{client.email}}</td>
+        </tr>
+    </table>
+</div>
