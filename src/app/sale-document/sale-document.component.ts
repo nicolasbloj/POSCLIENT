@@ -1,7 +1,8 @@
-import { SaleItem } from '../_model/document/sale-item.model';
-import { Product } from '../_model/product.model';
 import { Component, OnInit } from '@angular/core';
 
+import { SaleItem } from '../_model/document/sale-item.model';
+import { Product } from '../_model/product.model';
+import { Totals } from '../_model/document/totals.model';
 import { Client } from '../_model/person/client.model';
 
 @Component({
@@ -10,6 +11,8 @@ import { Client } from '../_model/person/client.model';
   styles: []
 })
 export class SaleDocumentComponent implements OnInit {
+
+  totals: Totals;
 
   selectedClientOnPopup: Client;
   selectedProductOnPopup: Product;
@@ -48,12 +51,21 @@ export class SaleDocumentComponent implements OnInit {
 
     this.selectedProductOnPopup = new Product();
 
+    this.totals.subtotal = this.totals.subtotal + (this.item.price * this.item.quantity);
+
+    this.totals.total = this.totals.subtotal + this.totals.iva;
+
+
   }
 
   receiveItemArray(items: SaleItem[]): void {
     this.items = items;
   }
 
+
+  receiveTotals(totals: Totals): void {
+    this.totals = totals;
+  }
 
 }
 

@@ -7,7 +7,7 @@
             <th>
               #
             </th>
-            <th>
+            <th class="visible-lg visible-sm hidden-xs">
               ID
             </th>
             <th>
@@ -30,28 +30,28 @@
         <tbody>
 
           <tr *ngFor="let item of items; let i = index">
-            <td>
+            <td class="active">
               {{i}}
             </td>
-            <td>
+            <td class="active visible-lg visible-sm hidden-xs">
               {{item.product.getId}}
             </td>
-            <td>
+            <td class="active">
               {{item.product.getCode}}
             </td>
-            <td>
+            <td class="active">
               {{item.product.getDescription}}
             </td>
-            <td>
+            <td class="warning">
               {{item.price}}
             </td>
-            <td>
+            <td class="warning">
               {{item.quantity}}
             </td>
-            <td>
+            <td class="warning">
               {{item.price * item.quantity}}
             </td>
-            <td>
+            <td class="danger">
               <button (click)="editItem(i)" type="button" class="btn btn-warning">e</button>
               <button (click)="deleteItem(i)" type="button" class="btn btn-danger">x</button>
               <button type="button" (click)="up(i)" class="btn btn-default">⇑</button>
@@ -61,6 +61,49 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-4 col-xs-4">
+
+  </div>
+  <div class="col-md-5 col-xs-4">
+  </div>
+  <div class="col-md-3 col-xs-4">
+    <div class="table-responsive">
+      <table class="table  table-hover">
+    
+          <tr>
+            <th class="info text-center">
+              Subtotal
+            </th>
+            <td  class="success text-center">
+              $ {{totals.subtotal}}
+            </td>
+
+          </tr>
+          <tr>
+            <th class="info text-center">
+              IVA
+            </th>
+            <td  class="success text-center">
+              $ {{totals.iva}}
+            </td>
+
+          </tr>
+          <tr>
+            <th class="info text-center">
+              Total
+            </th>
+            <td  class="success text-center">
+              $ {{totals.total}}
+            </td>
+
+          </tr>
+       </table>
     </div>
   </div>
 </div>
