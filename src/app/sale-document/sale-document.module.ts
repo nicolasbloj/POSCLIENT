@@ -8,6 +8,7 @@ import { ClientsModule } from '../clients/clients.module';
 import { SaleDocumentRoutingModule } from './sale-document-routing.module';
 import { SaleDocumentClientComponent } from './sale-document-client/sale-document-client.component';
 import { SaleDocumentProductComponent } from './sale-document-product/sale-document-product.component';
+import { SaleDocumentBodyComponent } from './sale-document-body/sale-document-body.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SaleDocumentProductComponent } from './sale-document-product/sale-docum
   declarations: [
     SaleDocumentComponent,
     SaleDocumentClientComponent,
-    SaleDocumentProductComponent
+    SaleDocumentProductComponent,
+    SaleDocumentBodyComponent
   ]
 })
 export class SaleDocumentModule { }

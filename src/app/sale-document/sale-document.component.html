@@ -1,6 +1,7 @@
 <div class="container">
   <nab-sale-document-client [client]='selectedClientOnPopup'>cargando...</nab-sale-document-client>
   <nab-sale-document-product (emitter)='receiveItem($event)' [product]='selectedProductOnPopup'>cargando...</nab-sale-document-product>
+  <nab-sale-document-body (emitter)="receiveItemArray($event)">cargando...</nab-sale-document-body>
 </div>
 
 <!-- Modal CLIENT-->

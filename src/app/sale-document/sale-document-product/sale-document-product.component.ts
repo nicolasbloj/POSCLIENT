@@ -29,11 +29,15 @@ export class SaleDocumentProductComponent implements OnInit {
   // to grid.
   addProduct() {
     // enviar item a sale-document
-    this.emitter.emit(this.values);
+    if (this.product.getCode !== undefined) {
+      this.emitter.emit(this.values);
 
-    // Limpiar item
-    this.product = new Product();
-    this.values = { price: 0, quantity: 1 };
+      // Limpiar item
+      this.product = new Product();
+      this.values = { price: 0, quantity: 1 };
+    } else {
+      alert('Debe seleccionar un producto');
+    }
   }
 
 }

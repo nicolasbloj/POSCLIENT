@@ -17,6 +17,8 @@ export class SaleDocumentComponent implements OnInit {
   // item recibido para usar en grilla de venta 
   item: SaleItem;
 
+  items: SaleItem[];
+
   constructor() { }
 
   ngOnInit() {
@@ -28,15 +30,30 @@ export class SaleDocumentComponent implements OnInit {
   // from doc-product-list in product module.
   receiveProduct(product: Product): void {
     this.selectedProductOnPopup = product;
-    console.log(product);
-  }
 
+    console.log('receive product ' + this.selectedProductOnPopup);
+    console.log(this.selectedProductOnPopup);
+  }
+  receiveFocus(): void {
+    this.selectedProductOnPopup = null;
+  }
   // from sale-document-product
   receiveItem(values: any): void {
 
     this.item = { product: this.selectedProductOnPopup, price: values.price, quantity: values.quantity };
 
-    console.log(this.item);
+    console.log(this.items);
+
+    this.items.push(this.item);
+
+    this.selectedProductOnPopup = new Product();
+
   }
+
+  receiveItemArray(items: SaleItem[]): void {
+    this.items = items;
+  }
+
+
 }
 
