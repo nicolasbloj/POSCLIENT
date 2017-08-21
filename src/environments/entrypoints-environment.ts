@@ -1,5 +1,7 @@
+import { serv } from './server-environment';
+
 export const server = {
-  pos_endpoint: 'http://172.20.1.173:8080/pos-endpoint'
+  pos_endpoint: serv.address + '/pos-endpoint'
 };
 
 export const product_resource = {
