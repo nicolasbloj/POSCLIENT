@@ -30,17 +30,62 @@ export class SaleDocumentFooterComponent implements OnInit {
       {
         'item': 1, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
         'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 2, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 3, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 4, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 5, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 6, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 7, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 8, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 9, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 10, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 11, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
+      },
+      {
+        'item': 12, 'code': 'AA1', 'description': 'Aire acondicioado Samsung 3500 W x', 'price': '12.5',
+        'quantity': '1', 'import': '12.5'
       }
+
     ];
 
     const columns2 = [
       { title: 'subtotal', dataKey: 't' },
-      { title: '255', dataKey: 'v' }
+      { title: ' $ 255', dataKey: 'v' }
     ];
 
     const rows2 = [
-      { 't': 'iva', 'v': '555' },
-      { 't': 'total', 'v': '555' }
+      { 't': 'iva', 'v': ' $ 200' },
+      { 't': 'total', 'v': ' $ 455' }
     ];
 
     const doc = new jsPDF();
@@ -48,13 +93,14 @@ export class SaleDocumentFooterComponent implements OnInit {
     // doc.autoPrint();
     doc.myText('Presupuesto', { align: 'center' }, 0, 20);
     doc.myText('Numero', { align: 'center' }, 0, 27);
-    doc.myText('5487523', { align: 'center' }, 0, 33);
+    doc.myText('5487', { align: 'center' }, 0, 33);
 
 
-    doc.setDrawColor(255, 0, 0); // draw red lines
+    // doc.setDrawColor(255, 255, 0); // draw red lines
 
-    doc.setLineWidth(0.5);
-    doc.line(0, 35, 1600, 35);
+    // doc.setLineWidth(0.5);
+
+    // doc.line(0, 35, 1600, 35);
 
     doc.autoTable(columns, rows, {
       // styles: { fillColor: [100, 255, 255] },
@@ -67,16 +113,15 @@ export class SaleDocumentFooterComponent implements OnInit {
       }
     });
 
+    let marginTop = 40;
+
+    // recorrer rows y calcular marginTop
+    for (let i = 0; i < rows.length; i = i + 1) {
+      marginTop = marginTop + 10;
+    }
     // totals
     doc.autoTable(columns2, rows2, {
-      // styles: { fillColor: 20 },
-
-      columnStyles: {
-
-        t: { fillColor: 20 },
-        v: { fillColor: 255 }
-      },
-      margin: { top: 66, left: 155 }
+      margin: { top: marginTop, left: 155 }
     });
 
 
@@ -84,6 +129,11 @@ export class SaleDocumentFooterComponent implements OnInit {
   }
 
 }
+
+
+
+
+
 
 
 (function (API) {
