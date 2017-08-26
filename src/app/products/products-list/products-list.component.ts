@@ -39,55 +39,56 @@ export class ProductsListComponent implements OnInit {
 
   }
 
-  onKeyIntoChangePositionModal(event: any, positionNew0: any) {
+  // on enter key into ChangePositionModal
+  changeItemPosition(event: any, positionNew0: any) {
 
     const positionNew: number = Number(positionNew0);
 
-    if (event.key === 'Enter') {
+    // if (event.key === 'Enter') { // No es necesario ya que usamos (keyup.enter) en <input ...>
 
-      if (positionNew >= 0 && positionNew < this.products.length) { // && o &  ?
+    if (positionNew >= 0 && positionNew < this.products.length) { // && o &  ?
 
-        const productToUpdatePosition: Product = this.products[this.positionToUpdate];
+      const productToUpdatePosition: Product = this.products[this.positionToUpdate];
 
-        if ((positionNew) < this.positionToUpdate) {
-          // Desplazar para abajo!
-          let product_initial: Product;
-          let product_next: Product;
-          for (let i: number = positionNew; i < this.positionToUpdate; i = i + 1) {
+      if ((positionNew) < this.positionToUpdate) {
+        // Desplazar para abajo!
+        let product_initial: Product;
+        let product_next: Product;
+        for (let i: number = positionNew; i < this.positionToUpdate; i = i + 1) {
 
-            if (i === positionNew) {
-              product_initial = this.products[i];
-              this.products[i] = productToUpdatePosition;
-            }
-
-            product_next = this.products[(i + 1)];
-            this.products[i + 1] = product_initial;
-            product_initial = product_next;
-
+          if (i === positionNew) {
+            product_initial = this.products[i];
+            this.products[i] = productToUpdatePosition;
           }
 
-        } else {
-          // Desplazar para arriba
-          let product_initial: Product;
-          let product_next: Product;
-
-          for (let i: number = positionNew; i > this.positionToUpdate; i = i - 1) {
-
-            if (i === positionNew) {
-              product_initial = this.products[i];
-              this.products[i] = productToUpdatePosition;
-            }
-
-            product_next = this.products[i - 1];
-            this.products[i - 1] = product_initial;
-            product_initial = product_next;
-
-          }
+          product_next = this.products[(i + 1)];
+          this.products[i + 1] = product_initial;
+          product_initial = product_next;
 
         }
-        jQuery('#changePositionModal').modal('toggle');
+
+      } else {
+        // Desplazar para arriba
+        let product_initial: Product;
+        let product_next: Product;
+
+        for (let i: number = positionNew; i > this.positionToUpdate; i = i - 1) {
+
+          if (i === positionNew) {
+            product_initial = this.products[i];
+            this.products[i] = productToUpdatePosition;
+          }
+
+          product_next = this.products[i - 1];
+          this.products[i - 1] = product_initial;
+          product_initial = product_next;
+
+        }
+
       }
+      jQuery('#changePositionModal').modal('toggle');
     }
+    // }
 
   }
 

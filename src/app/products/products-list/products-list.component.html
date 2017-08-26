@@ -64,7 +64,7 @@
         <div class="form-group">
           <label for="code">Nueva posición :</label>
 
-          <input (keyup)="onKeyIntoChangePositionModal($event,positionNew.value)" (focusout)="positionNew.value=''" type="text" class="form-control"
+          <input (keyup.enter)="changeItemPosition($event,positionNew.value)" (focusout)="positionNew.value=''" type="text" class="form-control"
             id="positionNew" name="positionNew" #positionNew>
 
         </div>
