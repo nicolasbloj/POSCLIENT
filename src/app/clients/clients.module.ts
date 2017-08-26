@@ -9,6 +9,7 @@ import { ClientsComponent } from './clients.component';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsDetailComponent } from './clients-detail/clients-detail.component';
 import { ClientsFilterComponent } from './clients-filter/clients-filter.component';
+import { PhonePipe } from './_pipe/phone.pipe';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ClientsFilterComponent } from './clients-filter/clients-filter.componen
     ClientsComponent,
     ClientsListComponent,
     ClientsDetailComponent,
-    ClientsFilterComponent
+    ClientsFilterComponent,
+    PhonePipe
   ],
   providers: [ClientService, RestClientService],
   exports: [
