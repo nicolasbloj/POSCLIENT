@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { SaleItem } from '../../_model/document/sale-item.model';
 import { Product } from '../../_model/product.model';
@@ -8,7 +8,7 @@ import { Product } from '../../_model/product.model';
   templateUrl: './sale-document-product.component.html',
   styles: []
 })
-export class SaleDocumentProductComponent implements OnInit {
+export class SaleDocumentProductComponent implements OnInit, OnChanges {
 
 
   @Input()
@@ -38,6 +38,13 @@ export class SaleDocumentProductComponent implements OnInit {
     } else {
       alert('Debe seleccionar un producto');
     }
+  }
+
+  // Angular calls its ngOnChanges() method whenever it detects changes to 
+  // @input()  properties of the component
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('SaleDocumentProduct -> OnChanges');
+    console.log(changes);
   }
 
 }
