@@ -1,3 +1,21 @@
 <p>
   about works!
 </p>
+
+<input [(ngModel)]="name" #ctrl="ngModel" required>
+<p>Value: {{ name }}</p>
+<p>Valid: {{ ctrl.valid }}</p><!-- Es valido si <input> es required y contiene valor. -->
+
+<!-- no se puede contener un input con ngmodel dentro de form -->
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate> <!--novalidate is used to disable browser's native form validation.-->
+  <input name="first" ngModel required #first="ngModel">
+  <input name="last" ngModel #last>
+  <button>Submit</button>
+</form>
+<p>First name value: {{ first.value }}</p>
+<p>First name valid: {{ first.valid }}</p>
+<p>Last name value: {{ last.value }}</p>
+<p>Form value: {{ f.value | json }}</p>
+<p>Form valid: {{ f.valid }}</p>
+

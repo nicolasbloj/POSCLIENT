@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,8 +8,10 @@ import { AboutRoutingModule } from './about-routing.module';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     AboutRoutingModule
   ],
   declarations: [AboutComponent]
 })
-export class AboutModule { }
+export class AboutModule {
+}
