@@ -16,16 +16,16 @@ export class SimpleAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     const currentUser: User = JSON.parse(localStorage.getItem('user'));
-    console.log('USER-GUARD');
-    console.log(currentUser);
+
     if (currentUser != null) {
-      if (currentUser.username === 'admin' && currentUser.password === 'admin') {
+      if (currentUser.username.toLocaleLowerCase() === 'admin' &&
+          currentUser.password === 'admin') {
         // logged in so return true
         return true;
       }
     }
 
-    // not logged in so redirect to login page with the return url
+    // not logged in so redirect to home page with the return url
     this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
     return false;
   }

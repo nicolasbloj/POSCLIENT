@@ -13,7 +13,8 @@ const routes: Routes = [
     },
     {
         path: 'products',
-        loadChildren: '../products/products.module#ProductsModule'
+        loadChildren: '../products/products.module#ProductsModule',
+        canActivate: [SimpleAuthGuard]
     },
     {
         path: 'clients',
@@ -22,7 +23,8 @@ const routes: Routes = [
     },
     {
         path: 'sale',
-        loadChildren: '../sale-document/sale-document.module#SaleDocumentModule'
+        loadChildren: '../sale-document/sale-document.module#SaleDocumentModule',
+        canActivate: [SimpleAuthGuard]
     },
     {
         path: 'contact',
