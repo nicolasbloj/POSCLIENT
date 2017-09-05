@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './_service/login.service';
 import { User } from '../_model/person/user.model';
 
+declare var jQuery: any;
+
 @Component({
   selector: 'nab-login',
   templateUrl: './login.component.html',
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit {
     const user: User = { username: value.user, password: value.pass };
 
     this.loginService.login(user);
+
+    jQuery('#login-modal').modal('toggle');
   }
 
   logout(): void {
