@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SimpleAuthGuard } from '../_guard/index';
 
 const routes: Routes = [
     {
@@ -16,7 +17,8 @@ const routes: Routes = [
     },
     {
         path: 'clients',
-        loadChildren: '../clients/clients.module#ClientsModule'
+        loadChildren: '../clients/clients.module#ClientsModule',
+        canActivate: [SimpleAuthGuard]
     },
     {
         path: 'sale',
@@ -34,6 +36,7 @@ const routes: Routes = [
     ],
     exports: [
         RouterModule // se importará desde el módulo padre
-    ]
+    ],
+    providers: [SimpleAuthGuard]
 })
 export class CoreRoutingModule { }
