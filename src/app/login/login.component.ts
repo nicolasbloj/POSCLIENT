@@ -27,9 +27,10 @@ export class LoginComponent implements OnInit {
 
   login(value: any): void {
 
-    const user: User = { username: value.user, password: value.pass };
+    // const user: User = { username: value.user, password: value.pass };
+    const user = this.loginService.login(value.user, value.pass);
 
-    if (this.loginService.login(user)) {
+    if (user != null) {
       this.emitter.emit(user);
     } else { alert('Usuario/contraseña incorrecto'); }
 
