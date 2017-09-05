@@ -8,6 +8,8 @@ import { User } from '../_model/person/user.model';
 })
 export class HomeComponent implements OnInit {
 
+  pathLogo = '../../assets/images/logo.png';
+
   login = false;
 
   name = '';
