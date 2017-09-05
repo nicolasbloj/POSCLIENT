@@ -1,8 +1,11 @@
-import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from './_service/login.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { UserService } from '../user/_service/user.service';
+import { LoginComponent } from './login.component';
+import { LoginService } from './_service/login.service';
+
 
 @NgModule({
   imports: [
@@ -12,7 +15,10 @@ import { CommonModule } from '@angular/common';
   declarations: [
     LoginComponent
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    UserService
+  ],
   exports: [LoginComponent]
 })
 export class LoginModule { }

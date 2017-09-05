@@ -1,20 +1,19 @@
+import { UserService } from '../../user/_service/user.service';
 import { Injectable } from '@angular/core';
 import { User } from '../../_model/person/user.model';
 
 @Injectable()
 export class LoginService {
 
-  constructor() { }
+  constructor(private _userService: UserService) { }
 
-  public login(user: User): boolean {
-    // call UserService.login. return true/false
-    // Here go will to database and get all user's data.
-    if ( (user.username === 'nico' || user.username === 'admin') &&
-         (user.password === '1234' || user.password === 'admin') ) { // where.
+  public login(_username: string, _password: string): User {
+    const user: User = this._userService.getUser(_username.toLocaleLowerCase(), _password);
+    if (user != null) {
       localStorage.setItem('user', JSON.stringify(user));
-      return true;
+      return user;
     }
-    return false;
+    return null;
   }
 
   public logout(): void {
