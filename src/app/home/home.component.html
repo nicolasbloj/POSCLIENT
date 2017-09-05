@@ -1,12 +1,36 @@
 <div class="container">
   <p>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quasi numquam beatae odit suscipit temporibus repellendus, dolore quibusdam voluptatum nemo exercitationem natus omnis dolores. Error ea dolores illo. Velit, aliquid.
-</p>
-<p>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quasi numquam beatae odit suscipit temporibus repellendus, dolore quibusdam voluptatum nemo exercitationem natus omnis dolores. Error ea dolores illo. Velit, aliquid.
-</p>
-<p>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quasi numquam beatae odit suscipit temporibus repellendus, dolore quibusdam voluptatum nemo exercitationem natus omnis dolores. Error ea dolores illo. Velit, aliquid.
-</p>
-<nab-login></nab-login>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quasi numquam beatae odit suscipit temporibus repellendus,
+    dolore quibusdam voluptatum nemo exercitationem natus omnis dolores. Error ea dolores illo. Velit, aliquid.
+  </p>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quasi numquam beatae odit suscipit temporibus repellendus,
+    dolore quibusdam voluptatum nemo exercitationem natus omnis dolores. Error ea dolores illo. Velit, aliquid.
+  </p>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quasi numquam beatae odit suscipit temporibus repellendus,
+    dolore quibusdam voluptatum nemo exercitationem natus omnis dolores. Error ea dolores illo. Velit, aliquid.
+  </p>
+  <hr>
+
+
+  <div *ngIf="login; then ifcondition else elsecondition"> ... </div>
+
+  <ng-template #ifcondition>
+    <h4>Bienvenido {{name}}</h4>
+  </ng-template>
+
+  <ng-template #elsecondition>
+    <h4>Debe iniciar sesion para poder trabajar con </h4>
+    <ul>
+      <li>Clientes</li>
+      <li>Productos</li>
+      <li>Ventas</li>
+    </ul>
+  </ng-template>
+ 
+
+  <div class="row text-center">
+    <nab-login (emitter)="receiveLogin($event)" (emitter2)="receiveLogout($event)"></nab-login>
+  </div>
 </div>

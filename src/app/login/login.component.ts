@@ -1,5 +1,5 @@
 import { NgForm } from '@angular/forms/src/directives';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { LoginService } from './_service/login.service';
 import { User } from '../_model/person/user.model';
@@ -13,6 +13,12 @@ declare var jQuery: any;
 })
 export class LoginComponent implements OnInit {
 
+  // for login
+  @Output()
+  emitter = new EventEmitter<User>();
+  // for logout
+  @Output()
+  emitter2 = new EventEmitter<any>();
 
   constructor(private loginService: LoginService) { }
 
@@ -21,16 +27,17 @@ export class LoginComponent implements OnInit {
 
   login(value: any): void {
 
-    console.log(value);
-
     const user: User = { username: value.user, password: value.pass };
 
-    this.loginService.login(user);
+    if (this.loginService.login(user)) {
+      this.emitter.emit(user);
+    } else { alert('Usuario/contraseña incorrecto'); }
 
     jQuery('#login-modal').modal('toggle');
   }
 
   logout(): void {
     this.loginService.logout();
+    this.emitter2.emit();
   }
 }

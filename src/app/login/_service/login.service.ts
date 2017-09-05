@@ -7,8 +7,6 @@ export class LoginService {
   constructor() { }
 
   public login(user: User): boolean {
-    console.log('USER-LOGIN');
-    console.log(user);
     // call UserService.login. return true/false
     // Here go will to database and get all user's data.
     if ( (user.username === 'nico' || user.username === 'admin') &&
@@ -21,7 +19,6 @@ export class LoginService {
 
   public logout(): void {
     // call UserService.login. return true/false
-
     localStorage.removeItem('user');
   }
 
