@@ -1,0 +1,30 @@
+<div class="col-md-6">
+  
+     <canvas baseChart
+                 [data]="lineChartData"
+                 [labels]="lineChartLabels"
+                 [options]="lineChartOptions"
+                 [chartType]="lineChartType"
+                 (chartHover)="chartHovered_line($event)"
+                 (chartClick)="chartClicked_line($event)"></canvas>
+   </div>
+   <div class="col-md-6">
+     <canvas baseChart
+                 [data]="pieChartData"
+                 [labels]="pieChartLabels"
+                 [chartType]="pieChartType"
+                 (chartHover)="chartHovered_line($event)"
+                 (chartClick)="chartClicked_line($event)"></canvas>
+   </div>
+   <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
+     <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+   </div>
+ 
+   <div style="display: block">
+    <canvas baseChart
+            [datasets]="radarChartData"
+            [labels]="radarChartLabels"
+            [chartType]="radarChartType"
+            (chartHover)="chartHovered_radar($event)"
+            (chartClick)="chartClicked_radar($event)"></canvas>
+  </div>
