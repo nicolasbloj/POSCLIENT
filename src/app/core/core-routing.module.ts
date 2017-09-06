@@ -27,6 +27,11 @@ const routes: Routes = [
         canActivate: [SimpleAuthGuard]
     },
     {
+        path: 'kpis',
+        loadChildren: '../kpis/kpis.module#KpisModule',
+        canActivate: [SimpleAuthGuard]
+    },
+    {
         path: 'contact',
         loadChildren: '../contact/contact.module#ContactModule'
     }
