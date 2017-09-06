@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { SimpleAuthGuard } from '../_guard/index';
+import { PermissionService } from '../_service/permission.service';
+import { AuthService } from '../_service/auth.service';
 
 const routes: Routes = [
     {
@@ -44,6 +47,10 @@ const routes: Routes = [
     exports: [
         RouterModule // se importará desde el módulo padre
     ],
-    providers: [SimpleAuthGuard]
+    providers: [
+        SimpleAuthGuard,
+        AuthService,
+        PermissionService
+    ]
 })
 export class CoreRoutingModule { }
