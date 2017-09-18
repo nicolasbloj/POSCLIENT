@@ -1,7 +1,7 @@
 import { serv } from './server-environment';
 
 export const server = {
-  pos_endpoint: serv.address + '/pos-endpoint'
+  pos_endpoint: `${serv.address}:${serv.port}/pos-endpoint`
 };
 
 export const product_resource = {
